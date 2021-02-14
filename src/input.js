@@ -31,8 +31,7 @@ const renderItem = (item) => {
 
 const options = (arr) => {
   if (arr !== 0) {
-    let array = [];
-    array = [];
+    const array = [];
     arr.map((item) => array.push(renderItem(item)));
     //console.log(array);
     return [

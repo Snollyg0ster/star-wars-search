@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Complete } from "./input";
 
-const dateTypes = [
+const dataTypes = [
   "films",
   "people",
   "planets",
@@ -11,38 +11,63 @@ const dateTypes = [
   "vehicles",
 ];
 
-let arr = [];
-
 export function ApiCall() {
-  let [inputText, setInputText] = useState("");
-  //let [arr, setArr] = useState([]);
-  useEffect(
-    () => {
-      arr = [];
-      if (inputText.length > 2) {
-        for (let i = 0; i < 6; i++) {
-          let type = dateTypes[i];
-          let url = "https://swapi.dev/api/" + type + "/?search=" + inputText;
-          async function fetchDate() {
-            let res = await fetch(url);
-            let data = await res.json();
-            let object = { type: type };
-            data.results.map((item) => Object.assign(item, object));
-            if (data.results.length !== 0) {
-              data.results.map((item) => arr.push(item));
-              // setArr(ar);
-            }
-          }
-          fetchDate();
-        }
-        console.log(inputText);
-      }
-    } /*, inputText*/
-  );
+  const [inputText, setInputText] = useState("");
+  const [arr, setArr] = useState([]);
 
   function updateState() {
     console.log(arr);
   }
+
+  async function fetchData(url) {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      return data;
+    } catch (e) {
+      console.error("error in fetchDate", e);
+    }
+  }
+
+  async function getTypeData(url, type) {
+    const data = await fetchData(url);
+
+    data.results.map((item) => ({ ...item, type }));
+
+    //console.warn(">>data.results", data.results);
+
+    return data.results;
+  }
+
+  async function updateArr() {
+    const newArr = [];
+
+    for (const type of dataTypes) {
+      const url = "https://swapi.dev/api/" + type + "/?search=" + inputText;
+
+      const typeData = await getTypeData(url, type);
+
+      if (typeData.length > 0) {
+        typeData.forEach((item) => {
+          newArr.push(item);
+
+          return item;
+        });
+      }
+    }
+
+    setArr(newArr);
+  }
+
+  useEffect(() => {
+    if (inputText.length > 2) {
+      updateArr();
+
+      console.log(inputText);
+    }
+    /* eslint-disable-next-line */
+  }, [inputText]);
 
   return (
     <div id="inputGroup">
