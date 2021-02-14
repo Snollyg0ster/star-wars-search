@@ -1,38 +1,103 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: black;
+  margin: 0;
+}
+
+#titleGroup {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 50vh;
+}
+
+#title {
+  font-family: "jediBold";
+  font-size: 300%;
+  letter-spacing: 5px;
+  filter: invert();
+  color: blue;
+  margin-bottom: 10px;
+}
+
+#smallTitle {
+  font-family: "jediHol";
+  font-size: 170%;
+  letter-spacing: 5px;
+  filter: invert();
+  color: blue;
+  margin-bottom: 50px;
+}
+
+#inputGroup {
+  width: fit-content;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(228, 228, 16);
+  padding-left: 5px;
+}
+
+#input {
+  font-family: "Open Sans", sans-serif;
+  border: 0;
+  background-color: transparent;
+  color: white;
+  height: 27px;
+  width: 200px;
+}
+
+#input::placeholder {
+  color: darkgray;
+}
+
+.ant-input:focus {
+  border: none;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.ant-select-item-group * {
+  font-size: 110%;
+  color: rgb(219, 219, 219);
+  background-color: transparent;
+}
+
+.ant-select-item-option-content * {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.ant-select-item:hover:not(.ant-select-item-group) {
+  background-color: rgb(75, 75, 75);
+  opacity: 0.2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#searchButton {
+  font-family: "Open Sans", sans-serif;
+  color: darkgray;
+  background-color: transparent;
+  border: 0;
 }
+
+#searchButton:active {
+  color: white;
+}
+
+@font-face {
+  font-family: "jediBold";
+  src: url("./fonts/Starjedi.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "jediHol";
+  src: url("./fonts/Starjhol.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
