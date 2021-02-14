@@ -14,6 +14,7 @@ const dataTypes = [
 function Search() {
   const [inputText, setInputText] = useState("");
   const [arr, setArr] = useState([]);
+  const [currentObject, setCurrentObject] = useState(null);
 
   function updateState() {
     console.log(arr);
@@ -60,6 +61,15 @@ function Search() {
     setArr(newArr);
   }
 
+  function optionOnSelect(option) {
+    const arrItem = arr.find((item) => item.name === option);
+
+    setCurrentObject(arrItem);
+    console.log(">>option in search component", option);
+  }
+
+  console.log(">> currentObject", currentObject);
+
   useEffect(() => {
     if (inputText.length > 2) {
       console.warn(">>useEffect works");
@@ -79,13 +89,30 @@ function Search() {
   }, [arr]);
 
   return (
-    <div id="inputGroup">
-      <Complete onChange={(text) => setInputText(text)} arr={arr} />
-      <button id="searchButton" onClick={updateState}>
-        search
-      </button>{" "}
-      */
-    </div>
+    <>
+      <div id="inputGroup">
+        <Complete
+          onChange={(text) => setInputText(text)}
+          onSelect={optionOnSelect}
+          arr={arr}
+        />
+        <button id="searchButton" onClick={updateState}>
+          search
+        </button>{" "}
+        */
+      </div>
+      {currentObject ? (
+        <div style={{ marginTop: 30, width: 300 }}>
+          {Object.keys(currentObject).map((key) => {
+            return (
+              <p key={key} style={{ color: "white", textAlign: "left" }}>
+                {key}: {currentObject[key]}
+              </p>
+            );
+          })}
+        </div>
+      ) : null}
+    </>
   );
 }
 
