@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Complete } from "./input";
+import Complete from "./input";
 
 const dataTypes = [
   "films",
@@ -11,7 +11,7 @@ const dataTypes = [
   "vehicles",
 ];
 
-export function ApiCall() {
+function Search() {
   const [inputText, setInputText] = useState("");
   const [arr, setArr] = useState([]);
 
@@ -83,6 +83,8 @@ export function ApiCall() {
     </div>
   );
 }
+
+export default Search;
 
 {
   /* <input

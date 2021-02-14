@@ -45,7 +45,7 @@ const options = (arr) => {
   }
 };
 
-export const Complete = (props) => (
+const Complete = (props) => (
   <AutoComplete
     dropdownClassName="certain-category-search-dropdown"
     dropdownStyle={{
@@ -64,3 +64,5 @@ export const Complete = (props) => (
     <Input size="large" placeholder="input here" />
   </AutoComplete>
 );
+
+export default Complete;

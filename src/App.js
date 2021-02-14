@@ -1,6 +1,6 @@
 import "./App.css";
-import { ApiCall } from "./apiCall";
-import { Complete } from "./input";
+import ApiCall from "./Search";
+import Complete from "./input";
 
 function App() {
   return (
