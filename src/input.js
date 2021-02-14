@@ -60,7 +60,6 @@ const Complete = (props) => (
       borderRadius: "10px",
       backgroundColor: "black",
     }}
-    listHeight="30vh"
     dropdownMatchSelectWidth={400}
     id="input"
     options={options(props.arr)}
