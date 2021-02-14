@@ -1,6 +1,5 @@
 import "./App.css";
 import ApiCall from "./Search";
-import Complete from "./input";
 
 function App() {
   return (

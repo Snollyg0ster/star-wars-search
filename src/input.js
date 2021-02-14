@@ -1,8 +1,8 @@
 import React from "react";
 import "antd/dist/antd.dark.css";
 import "./index.css";
-import { Input, AutoComplete, Dropdown, Select } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Input, AutoComplete /*, Dropdown, Select*/ } from "antd";
+//import { UserOutlined } from "@ant-design/icons";
 
 const renderTitle = (title) => {
   return <span>{title}</span>;
@@ -16,8 +16,6 @@ const renderItem = (item) => {
   } else {
     name = item.name;
   }
-
-  console.warn(">>item.type", item.type);
 
   return {
     value: name,

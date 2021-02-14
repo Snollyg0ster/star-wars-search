@@ -17,7 +17,7 @@ function Search() {
   const [currentObject, setCurrentObject] = useState(null);
 
   function updateState() {
-    console.log(arr);
+    console.log("Result: ", arr);
   }
 
   async function fetchData(url) {
@@ -35,8 +35,6 @@ function Search() {
     const data = await fetchData(url);
 
     const formattedData = data.results.map((item) => ({ ...item, type }));
-
-    console.warn(">>formattedData", formattedData);
 
     return formattedData;
   }
@@ -65,25 +63,26 @@ function Search() {
     const arrItem = arr.find((item) => item.name === option);
 
     setCurrentObject(arrItem);
-    console.log(">>option in search component", option);
   }
 
-  console.log(">> currentObject", currentObject);
+  function resetArr() {
+    setArr([]);
+  }
 
   useEffect(() => {
     if (inputText.length > 2) {
-      console.warn(">>useEffect works");
-
       updateArr();
-
-      console.log(inputText);
+    } else {
+      if (inputText.length === 0) {
+        resetArr();
+      }
     }
     /* eslint-disable-next-line */
   }, [inputText]);
 
   useEffect(() => {
     if (inputText.length === 0 && arr.length > 0) {
-      setArr([]);
+      resetArr();
     }
     /* eslint-disable-next-line */
   }, [arr]);
@@ -116,15 +115,3 @@ function Search() {
 }
 
 export default Search;
-
-{
-  /* <input
-        type="text"
-        id="input"
-        placeholder="Type something"
-        onChange={(text) => setInputText(text.target.value)}
-      />
-      <button id="searchButton" onClick={updateState}>
-        search
-      </button> */
-}
