@@ -38,7 +38,7 @@ const options = (arr) => {
   if (arr !== 0) {
     const array = [];
     arr.map((item) => array.push(renderItem(item)));
-    //console.log(array);
+
     return [
       {
         label: renderTitle("searching results"),
@@ -50,29 +50,25 @@ const options = (arr) => {
   }
 };
 
-const Complete = (props) => {
-  console.log(">>props.arr", props.arr);
-
-  return (
-    <AutoComplete
-      dropdownClassName="certain-category-search-dropdown"
-      dropdownStyle={{
-        borderColor: "rgb(228, 228, 16)",
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderRadius: "10px",
-        backgroundColor: "black",
-      }}
-      listHeight="30vh"
-      dropdownMatchSelectWidth={400}
-      id="input"
-      options={options(props.arr)}
-      onChange={(text) => props.onChange(text)}
-      onSelect={(option) => props.onSelect(option)}
-    >
-      <Input size="large" placeholder="input here" />
-    </AutoComplete>
-  );
-};
+const Complete = (props) => (
+  <AutoComplete
+    dropdownClassName="certain-category-search-dropdown"
+    dropdownStyle={{
+      borderColor: "rgb(228, 228, 16)",
+      borderWidth: "2px",
+      borderStyle: "solid",
+      borderRadius: "10px",
+      backgroundColor: "black",
+    }}
+    listHeight="30vh"
+    dropdownMatchSelectWidth={400}
+    id="input"
+    options={options(props.arr)}
+    onChange={(text) => props.onChange(text)}
+    onSelect={(option) => props.onSelect(option)}
+  >
+    <Input size="large" placeholder="input here" />
+  </AutoComplete>
+);
 
 export default Complete;
