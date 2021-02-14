@@ -62,9 +62,13 @@ function Search() {
 
   useEffect(() => {
     if (inputText.length > 2) {
-      updateArr();
+      if (arr.length === 0) {
+        console.warn(">>useEffect works");
 
-      console.log(inputText);
+        updateArr();
+
+        console.log(inputText);
+      }
     } else {
       if (inputText.length === 0 && arr.length > 0) {
         setArr([]);
