@@ -1,5 +1,5 @@
 import React from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.dark.css";
 import "./index.css";
 import { Input, AutoComplete, Dropdown, Select } from "antd";
 import { UserOutlined } from "@ant-design/icons";
@@ -17,6 +17,8 @@ const renderItem = (item) => {
     name = item.name;
   }
 
+  console.warn(">>item.type", item.type);
+
   return {
     value: name,
     item: item,
@@ -28,7 +30,7 @@ const renderItem = (item) => {
         }}
       >
         {name}
-        <span>{item.type}</span>
+        <span style={{ color: "white" }}>{item.type}</span>
       </div>
     ),
   };
@@ -61,7 +63,7 @@ const Complete = (props) => {
         borderWidth: "2px",
         borderStyle: "solid",
         borderRadius: "10px",
-        backgroundColor: "transparent",
+        backgroundColor: "black",
       }}
       listHeight="30vh"
       dropdownMatchSelectWidth={400}

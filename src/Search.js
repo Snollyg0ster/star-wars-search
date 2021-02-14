@@ -34,11 +34,11 @@ function Search() {
   async function getTypeData(url, type) {
     const data = await fetchData(url);
 
-    data.results.map((item) => ({ ...item, type }));
+    const formattedData = data.results.map((item) => ({ ...item, type }));
 
-    //console.warn(">>data.results", data.results);
+    console.warn(">>formattedData", formattedData);
 
-    return data.results;
+    return formattedData;
   }
 
   async function updateArr() {
@@ -99,10 +99,9 @@ function Search() {
         <button id="searchButton" onClick={updateState}>
           search
         </button>{" "}
-        */
       </div>
       {currentObject ? (
-        <div style={{ marginTop: 30, width: 300 }}>
+        <div style={{ marginTop: 30, width: 280 }}>
           {Object.keys(currentObject).map((key) => {
             return (
               <p key={key} style={{ color: "white", textAlign: "left" }}>
