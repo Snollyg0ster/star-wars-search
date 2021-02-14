@@ -65,9 +65,13 @@ export function ApiCall() {
       updateArr();
 
       console.log(inputText);
+    } else {
+      if (inputText.length === 0 && arr.length > 0) {
+        setArr([]);
+      }
     }
     /* eslint-disable-next-line */
-  }, [inputText]);
+  }, [inputText, arr]);
 
   return (
     <div id="inputGroup">
