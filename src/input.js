@@ -60,6 +60,7 @@ const Complete = (props) => (
       borderRadius: "10px",
       backgroundColor: "black",
     }}
+    defaultActiveFirstOption={true}
     dropdownMatchSelectWidth={400}
     id="input"
     options={options(props.arr)}

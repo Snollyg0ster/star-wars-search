@@ -97,8 +97,6 @@ function Search() {
     /* eslint-disable-next-line */
   }, [arr]);
 
-  //useEffect(() => resetCurrentObject(), [inputText]);
-
   return (
     <>
       <div id="inputGroup">
@@ -107,7 +105,7 @@ function Search() {
           onSelect={optionOnSelect}
           arr={arr}
         />
-        <button id="searchButton" onClick={resetCurrentObject}>
+        <button id="searchButton" onClick={() => setCurrentObject(arr[0])}>
           search
         </button>{" "}
       </div>
