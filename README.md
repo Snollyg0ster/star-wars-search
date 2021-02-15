@@ -2,9 +2,8 @@
 
 Установка зависимостей:
 
-`yarn`
-`yarn add antd`
+`npm i`
 
 Запуск проекта:
 
-`yarn start`
+`npm start`

@@ -16,10 +16,6 @@ function Search() {
   const [arr, setArr] = useState([]);
   const [currentObject, setCurrentObject] = useState(null);
 
-  // function updateState() {
-  //   console.log("Result: ", arr);
-  // }
-
   async function fetchData(url) {
     try {
       const res = await fetch(url);
