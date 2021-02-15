@@ -16,9 +16,9 @@ function Search() {
   const [arr, setArr] = useState([]);
   const [currentObject, setCurrentObject] = useState(null);
 
-  function updateState() {
-    console.log("Result: ", arr);
-  }
+  // function updateState() {
+  //   console.log("Result: ", arr);
+  // }
 
   async function fetchData(url) {
     try {
@@ -59,21 +59,31 @@ function Search() {
     setArr(newArr);
   }
 
+  function resetArr() {
+    setArr([]);
+  }
+
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    const input = document.getElementById("input");
+    if (target === input) resetCurrentObject();
+  });
+
+  function resetCurrentObject() {
+    setCurrentObject("");
+  }
+
   function optionOnSelect(option) {
     const arrItem = arr.find((item) => item.name === option);
 
     setCurrentObject(arrItem);
   }
 
-  function resetArr() {
-    setArr([]);
-  }
-
   useEffect(() => {
     if (inputText.length > 2) {
       updateArr();
     } else {
-      if (inputText.length === 0) {
+      if (inputText.length < 3) {
         resetArr();
       }
     }
@@ -87,6 +97,8 @@ function Search() {
     /* eslint-disable-next-line */
   }, [arr]);
 
+  //useEffect(() => resetCurrentObject(), [inputText]);
+
   return (
     <>
       <div id="inputGroup">
@@ -95,19 +107,21 @@ function Search() {
           onSelect={optionOnSelect}
           arr={arr}
         />
-        <button id="searchButton" onClick={updateState}>
+        <button id="searchButton" onClick={resetCurrentObject}>
           search
         </button>{" "}
       </div>
       {currentObject ? (
-        <div style={{ marginTop: 30, width: 280 }}>
-          {Object.keys(currentObject).map((key) => {
-            return (
-              <p key={key} style={{ color: "white", textAlign: "left" }}>
-                {key}: {currentObject[key]}
-              </p>
-            );
-          })}
+        <div id="resultTableBorders">
+          <div id="resultTable">
+            {Object.keys(currentObject).map((key) => {
+              return (
+                <p key={key}>
+                  {key}: {currentObject[key]}
+                </p>
+              );
+            })}
+          </div>
         </div>
       ) : null}
     </>
