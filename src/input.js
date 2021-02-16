@@ -59,7 +59,6 @@ const Complete = (props) => (
       borderStyle: "solid",
       borderRadius: "10px",
       backgroundColor: "black",
-      height: "40vh",
     }}
     defaultActiveFirstOption={true}
     dropdownMatchSelectWidth={400}
