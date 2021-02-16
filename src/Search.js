@@ -70,7 +70,15 @@ function Search() {
   }
 
   function optionOnSelect(option) {
-    const arrItem = arr.find((item) => item.name === option);
+    const arrItem = arr.find((item) => {
+      let name;
+      if (item.name == null) {
+        name = item.title;
+      } else {
+        name = item.name;
+      }
+      return name === option;
+    });
 
     setCurrentObject(arrItem);
   }
@@ -110,7 +118,7 @@ function Search() {
           <div id="resultTable">
             {Object.keys(currentObject).map((key) => {
               return (
-                <p key={key}>
+                <p key={key} class="infoRow">
                   {key}: {currentObject[key]}
                 </p>
               );

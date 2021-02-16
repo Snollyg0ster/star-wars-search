@@ -88,7 +88,7 @@
 }
 
 #resultTableBorders {
-  width: 280px;
+  width: 288px;
   height: 230px;
   border-radius: 10px;
   border-width: 2px;
@@ -103,6 +103,9 @@
   overflow-x: hidden;
   padding: 7px;
   text-align: left;
+}
+
+.infoRow {
 }
 
 @font-face {
